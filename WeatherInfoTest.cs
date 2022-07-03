@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
             string Info = EnterBox.Text;
             string Info2 = EnterBox2.Text;
             String str = client.DownloadString("https://api.openweathermap.org/data/2.5/weather?lat=" + Info + "&lon=" + Info2 + "&appid=958e2e63abd430a9e1eded10bad04bff");
-            WeatherBox.Text = "Entered cords- " + str.Substring(16,Info2.Length) + " - " + str.Substring(16+Info.Length+5, Info.Length)+ "| Weather info of the cords: " + str;
+            WeatherBox.Text = "Entered cords- " + str.Substring(16,Info2.Length + 7 + Info.Length) + "| Weather info of the cords: " + str.Substring(25 + Info2.Length + Info.Length) ;
         }
     }
 }
