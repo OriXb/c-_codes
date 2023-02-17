@@ -1,0 +1,17 @@
+List<string> SubSet(string s)
+{
+    List<string> list = new List<string>();
+    if(s == null) { return list; }
+    if(s.Length == 0)
+    { list.Add(""); return list; }
+
+    List<string> previosList = SubSet(s.Remove(s.Length - 1));
+    char lastChar = s[s.Length - 1];
+    foreach(string str in previosList)
+    {
+        list.Add(str);
+        list.Add(str+lastChar);
+    }
+    
+    return list;
+}
