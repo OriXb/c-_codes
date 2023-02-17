@@ -1,0 +1,43 @@
+int[] memo = new int[5+1];
+Console.WriteLine(fiboFunc(5));
+
+string s = null;
+List<string> list = GetPerm(s);
+foreach(string item in list)
+{
+    Console.WriteLine(item);
+}
+
+
+List<string> GetPerm(string s)
+{
+    List<string> list = new List<string>();
+    if(s == null) { return list; }
+    if(s.Length == 1  || s.Length == 0)
+    { list.Add(s); return list; }
+
+    List<string> previosList = GetPerm(s.Remove(s.Length - 1));
+    string newChar = s[s.Length - 1].ToString();
+    foreach(var str in previosList)
+    {
+        for(int i = 0; i <= str.Length; i++)
+        {
+            list.Add(str.Insert(i,newChar));
+        }
+    }
+    return list;
+}
+
+
+int fiboFunc(int n)
+{
+    Console.WriteLine(n + "c");
+    if(n == 0)
+    { return 1; }
+    if(n < 0)
+    { return 0; }
+    if(memo[n] != 0)
+    { return memo[n]; }
+    memo[n] = fiboFunc(n-2) + fiboFunc(n-1);
+    return memo[n];
+}
